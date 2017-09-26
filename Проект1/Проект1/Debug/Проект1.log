@@ -1,0 +1,7 @@
+﻿  Source.cpp
+c:\users\мвидео\desktop\oaip_labs_shalygina\проект1\проект1\source.cpp(22): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\мвидео\desktop\oaip_labs_shalygina\проект1\проект1\source.cpp(15): warning C4477: "scanf": в строке форматирования "%d" требуется аргумент типа "int *", но вариативный аргумент "1" имеет тип "float *"
+c:\users\мвидео\desktop\oaip_labs_shalygina\проект1\проект1\source.cpp(21): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "double"
+c:\users\мвидео\desktop\oaip_labs_shalygina\проект1\проект1\source.cpp(10): warning C4101: D: неиспользованная локальная переменная
+  Проект1.vcxproj -> C:\Users\МВидео\Desktop\OAip_labs_Shalygina\Проект1\Debug\Проект1.exe
+  Проект1.vcxproj -> C:\Users\МВидео\Desktop\OAip_labs_Shalygina\Проект1\Debug\Проект1.pdb (Partial PDB)
