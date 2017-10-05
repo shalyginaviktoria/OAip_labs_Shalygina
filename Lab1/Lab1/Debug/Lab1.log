@@ -1,5 +1,5 @@
 ﻿  Source.cpp
-c:\users\мвидео\desktop\oaip_labs_shalygina\lab1\lab1\source.cpp(13): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-c:\users\мвидео\desktop\oaip_labs_shalygina\lab1\lab1\source.cpp(19): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+c:\users\мвидео\desktop\oaip_labs_shalygina\lab1\lab1\source.cpp(24): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+c:\users\мвидео\desktop\oaip_labs_shalygina\lab1\lab1\source.cpp(27): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
   Lab1.vcxproj -> C:\Users\МВидео\Desktop\OAip_labs_Shalygina\Lab1\Debug\Lab1.exe
   Lab1.vcxproj -> C:\Users\МВидео\Desktop\OAip_labs_Shalygina\Lab1\Debug\Lab1.pdb (Partial PDB)

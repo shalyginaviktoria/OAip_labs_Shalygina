@@ -1,25 +1,32 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <iostream>
+#include <conio.h>
+#include <windows.h>
+
+
 using namespace std;
-#define KMPH 1.852;
-#define MPS 3.6;
+#define KilometersPerHour 1.852; // именования констант
+#define МetersPerSecond 3.6;
 
 int main()
 {
-	float a;
-	printf("Enter the speed in the node ");
-	scanf("%f", &a);
-	float b = a * KMPH;
-	if (a == 0) {
-		printf("Error: speed must be float");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	float speed;
+	printf("Введите скорость в узлах  ");
+
+	int check;
+	check = scanf("%f", &speed);
+	if (check == 0) {
+		printf("Ошибка: скорость должна быть вещественым числом");
 	}
 	else {
-		printf("Speed in km / h %9.2f  \n", b);
-		float c = b * MPS;
-		printf("Speed in m / s %9.2f  \n", c);
-	};
-	system("Pause");
+		float speed2 = speed * KilometersPerHour; //speed2 не о чем не говорит
+		printf("Скорость в км / ч %9.2f  \n", speed2);
 
+		float speed3 = speed2 * МetersPerSecond;
+		printf("Скорость в м / с %9.2f  \n", speed3);
+	     }
+	_getch();
 }
 
