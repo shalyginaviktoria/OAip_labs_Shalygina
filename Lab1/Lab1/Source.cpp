@@ -5,8 +5,8 @@
 
 
 using namespace std;
-#define KilometersPerHour 1.852; // именования констант
-#define МetersPerSecond 3.6;
+#define KilometersPerHour 1.852
+#define МetersPerSecond 3.6
 
 int main()
 {
@@ -21,11 +21,11 @@ int main()
 		printf("Ошибка: скорость должна быть вещественым числом");
 	}
 	else {
-		float speed2 = speed * KilometersPerHour; //speed2 не о чем не говорит
-		printf("Скорость в км / ч %9.2f  \n", speed2);
+		float speedKM = speed * KilometersPerHour; 
+		printf("Скорость в км / ч %9.2f  \n", speedKM);
 
-		float speed3 = speed2 * МetersPerSecond;
-		printf("Скорость в м / с %9.2f  \n", speed3);
+		float speedMS = speedKM * МetersPerSecond;
+		printf("Скорость в м / с %9.2f  \n", speedMS);
 	     }
 	_getch();
 }
