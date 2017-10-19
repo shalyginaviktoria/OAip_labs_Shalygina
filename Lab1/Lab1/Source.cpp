@@ -26,5 +26,6 @@ int main()
 		printf("Скорость в м / с %9.2f  \n", speedMS);
 	     }
 	_getch();
+	return 0;
 }
 
