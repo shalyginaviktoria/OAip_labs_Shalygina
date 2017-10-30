@@ -24,11 +24,16 @@ int main()
 	int sum_of_positive_elements=0 ;
 	for (int i = 0; i < array_length; i++) {
 		printf("Введите элемент массива");
-		scanf("%d", &a[i]);
-		if (a[i] > 0) {
+		int check;
+		check = scanf("%d", &a[i]);
+		if (check == 0) {
+			printf("Ошибка, элементм массива должен быть целым числом ");
+			a[i] = 0;
+		}
+		
+		if (a[i] > 0 && check != 0){
 			sum_of_positive_elements += a[i];
 		}
-		//printf(" %d ", a[i]);
 	}
 	printf("Сумма положительных элементов массива %d", sum_of_positive_elements);
 	_getch();
