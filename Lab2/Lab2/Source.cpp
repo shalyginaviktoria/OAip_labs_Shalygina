@@ -1,8 +1,5 @@
 ﻿/*
-Шалыгина Виктория Алексеевна
-Лабораторная работа №2.
-Вариант №4
-Задание: Написать программу, которая вычисляет сумму всех положительных элементов
+Шалыгина Виктория Алексеевна Лабораторная работа №2. Вариант №4 Задание: Написать программу, которая вычисляет сумму всех положительных элементов
 массива. Массив и его длина вводятся пользователем.
 */
 
@@ -10,25 +7,24 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-
-
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	printf("Введите длину массива  ");
-	int array_length;
-	scanf("%d", &array_length);
+	printf("Введите длину массива   ");
+	int length;
+	scanf("%d", &length);
 	int a[100];
-	
 	int sum_of_positive_elements=0 ;
-	for (int i = 0; i < array_length; i++) {
+	for (int i = 0; i < length; i++) {
 		printf("Введите элемент массива");
 		int check;
 		check = scanf("%d", &a[i]);
 		if (check == 0) {
-			printf("Ошибка, элементм массива должен быть целым числом ");
+			printf("Ошибка, элементом массива должен быть целым числом, вы сломали программу \n");
 			a[i] = 0;
+			_getch();
+			return 0;
 		}
 		
 		if (a[i] > 0 && check != 0){
@@ -38,5 +34,4 @@ int main()
 	printf("Сумма положительных элементов массива %d", sum_of_positive_elements);
 	_getch();
 	return 0;
-
 }
