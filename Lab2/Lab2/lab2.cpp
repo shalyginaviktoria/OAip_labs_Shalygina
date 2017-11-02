@@ -9,25 +9,13 @@
 #include <windows.h>
 
 int readValue() {
-	int x;
-	int check = 0;
-	while (check == 0) {
-		while (getchar() != '\n');
-		check = scanf("%d", &x);
-		if (check == 0) {
-			printf("Ошибка, элементом массива должен быть целым числом, вы сломали программу \n");
-		}
-	}
-	return x;
-}
-
-int summ(int x) {
-	if (x > 0) {
-		return x;
-	}
-	else {
-		return 0;
-	}
+	int check;
+	check = scanf("%d", &a[i]);
+	if (check == 0) {
+		printf("Ошибка, элементом массива должен быть целым числом, вы сломали программу \n");
+		a[i] = 0;
+		_getch();
+	return check;
 }
 int main()
 {
@@ -37,32 +25,15 @@ int main()
 	int length;
 	scanf("%d", &length);
 	int a[100];
-	int SumOfPositiveElements = 0;
+	int sum_of_positive_elements=0 ;
 	for (int i = 0; i < length; i++) {
 		printf("Введите элемент массива");
-		a[i] = readValue();
-		
-		SumOfPositiveElements += summ(a[i]);
+		readValue();	
+		if (a[i] > 0 && check != 0){
+			sum_of_positive_elements += a[i];
+		}
 	}
-	printf("Сумма положительных элементов массива %d", SumOfPositiveElements);
+	printf("Сумма положительных элементов массива %d", sum_of_positive_elements);
 	_getch();
-	return 0;
-}
-
-int kaka() {
-	int r=0 ;
-	while (r >= 10) {
-		r++;
-		printf("%d", r);
-	}
-	
-	for (r=0 ; r < 10; r++){ 
-		printf("%d", r); 
-	}
-
-	do {
-		printf("%d", r);
-		r++;
-	} while (r < 10);
 	return 0;
 }
