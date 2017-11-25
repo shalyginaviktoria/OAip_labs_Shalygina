@@ -10,44 +10,55 @@
 #include <string.h>
 
 struct Word {
-	char data;
+	char data[255];
 	int size;
 	int countLetterM;
 };
-int sizeSTR(char x){
-	//char d=x;
-	//size_t *strlen(const char *x);
-//	strcpy(d);
-	//int n = strlen(d);
-	//printf("Количество символов в слове равно :%d ", strlen(x));
-	return 0;
+int sizeSTR(char *x){
+	int y = strlen(x);
+//	printf("Количество символов в слове равно :%d \n", y);
+	return y;
 }
-int amountM() {
-	return 0;
+int amountM(char *x, int n) {
+	int AmountLetterM = 0;
+	for (int i = 0; i < n; i++) {
+		if (x[i] == 'м'|| x[i] =='М' ) {
+			AmountLetterM ++;
+		}
+	}
+	return AmountLetterM;
 }
-
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	Word words[100];
-	printf("Введите количество слов   ");
-	for (int i = 0; i < 100; i++) {
-		printf("Введите слово");
-		scanf("%s", words[i].data);
-		words[i].size = sizeSTR();
-		words[i].countLetterM = amountM();
+	Word words[10];
+	printf("Введите слова \n");
+	for (int i = 0; i < 5; i++) {
+		printf("Введите слово: ");
+		scanf("%s", &words[i].data);
+		words[i].size = sizeSTR(words[i].data);
+		words[i].countLetterM = amountM(words[i].data, words[i].size);
+		//printf("Колличество букв М :%d   \n  ", words[i].countLetterM);
 	}
 
 	int maxCountM = 0;
-	for (int i = 0; i < 100 ; i++){
+	for (int i = 0; i < 5 ; i++){
 		if (words[i].countLetterM > maxCountM ){ 
 			maxCountM = words[i].countLetterM;
-		}
-		else {
-
-		}
+		}	
 	}	
+	printf("Максимальное количество букв М :%d  \n", maxCountM);
+	if (maxCountM != 0) {
+		for (int i = 0; i < 5; i++) {
+			if (words[i].countLetterM == maxCountM) {
+				printf("Слово с максимальным количеством букв М :%s \n", words[i].data);
+			}
+		}
+	}
+	else {
+		printf("Слов с буквой М нет    \n  ");
+	}
 	_getch();
 	return 0;
 }
