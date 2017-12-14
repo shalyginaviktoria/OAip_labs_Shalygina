@@ -16,7 +16,7 @@ struct Word {
 };
 int sizeSTR(char *x){
 	int y = strlen(x);
-//	printf("Количество символов в слове равно :%d \n", y);
+//	printf("Количествоп символов в слове равно :%d \n", y);
 	return y;
 }
 int amountM(char *x, int n) {
