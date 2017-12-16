@@ -4,7 +4,6 @@
 использовать символ табуляции. «Футбольная команда»: название, город, количество сыгранных игр, количество
 очков (проигрыши, выигрыши, ничьи), количество игроков, фамилия тренера.
 */
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <conio.h>
@@ -28,10 +27,6 @@ struct Footbool {
 	char SurnameOftheTrainer[255];
 	int points;
 };
-	int sizeSTR(char *x) {
-		int y = strlen(x);
-		return y;
-	}
 int main()
 {
 	SetConsoleCP(1251);
@@ -67,74 +62,53 @@ int main()
 	FILE *f = fopen("tablOut.txt", "w");
 	int numderOfOut;
 	printf("Введите по какому признаку сортировать команды:\n");
-	printf("1-названия(от самого длинного до самого короткого), 2-количество игроков, 3-количетво очков, 4-город(аналогично названию)->");
+	printf(" 1-количество игроков, 2-количетво очков, ->");
 	scanf("%d", &numderOfOut);
-	switch (numderOfOut) // начало оператора switch
+	switch (numderOfOut) 
 	{
-	case 1: //сортировка по названию от длинного до короткого
-	{
-		int lenght[1000];
-		int maxLenght = 0;
-		for (int i = 1; i <= amountTeam; i++)
-		{
-			lenght[i] = sizeSTR(team[i].name);
-			if (lenght[i] > maxLenght)
-			{
-				maxLenght = lenght[i];
-			}
-		}
-		for (int i = 0; i < amountTeam; i++)
-		{
-			fprintf(f, "Название команды %s\n", team[i].name);
-			fprintf(f, "Город команды %s\n", team[i].city);
-			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
-			fprintf(f, "Количество очков команды %d\n", team[i].points);
-			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
-			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
-			fprintf(f, "_________________________________________________ \n");
-		}
-		break;
-	}
-	case 2: //сортировка по количеству игроков 
-	{
-		for (int i = 0; i < amountTeam; i++) // пузырьком по колличеству очков сортируем       
-		{
-			int c = 0;
-			for (int j = amountTeam - 1; j >= i; j--) // кол-во элементов
+	  case 1: //сортировка по количеству игроков 
+	  {
+		 for (int i = 1; i < amountTeam; i++) 
+		 {  
+			for (int j = amountTeam - 1; j >= i; j--) 
 				if (team[j].amountPlayers < team[j + 1].amountPlayers)
 				{
-					c = team[j].amountPlayers;
-					team[j].amountPlayers = team[j + 1].amountPlayers;
-					team[j + 1].amountPlayers = c;
+					Footbool buf;
+					buf = team[j];
+					team[j] = team[j + 1];
+					team[j + 1] = buf;   
 				}
-		}
-		for (int i = 0; i < amountTeam; i++)
-		{
+		 }
+		fprintf(f, "Вывод в сортировке по количеству игроков \n");
+	    fprintf(f, "_________________________________________________ \n");
+		for (int i = 1; i <= amountTeam; i++)
+		{ 
 			fprintf(f, "Название команды %s\n", team[i].name);
 			fprintf(f, "Город команды %s\n", team[i].city);
 			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
 			fprintf(f, "Количество очков команды %d\n", team[i].points);
 			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
 			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
-			fprintf(f, "_________________________________________________ \n");
-
+			fprintf(f, "_________________________________________________ \n"); 
 		}
 		break;
-	}
-	case 3: //сортировка по количеству очков 
-	{
-		for (int i = 0; i < amountTeam; i++)       
+	  }
+	  case 2: //сортировка по количеству очков 
+	  {
+		for (int i = 1; i < amountTeam; i++)       
 		{
-			int c = 0;
 			for (int j = amountTeam - 1; j >= i; j--)
 				if (team[j].points < team[j + 1].points)
 				{
-					c = team[j].points;
-					team[j].points = team[j + 1].points;
-					team[j + 1].points = c;
+					Footbool buf;
+					buf = team[j];
+					team[j] = team[j + 1];
+					team[j + 1] = buf;
 				}
 		}
-		for (int i = 0; i < amountTeam; i++)
+		fprintf(f, "Вывод в сортировке по количеству очков \n");
+		fprintf(f, "_________________________________________________ \n");
+		for (int i = 1; i <= amountTeam; i++)
 		{
 			fprintf(f, "Название команды %s\n", team[i].name);
 			fprintf(f, "Город команды %s\n", team[i].city);
@@ -145,36 +119,89 @@ int main()
 			fprintf(f, "_________________________________________________ \n");
 		}
 			break;
+	  }
+	
+	  default: 
+	  {
+		 fprintf(f, "Вывод в исходной сортировке \n");
+		 fprintf(f, "_________________________________________________ \n");
+		 for (int i = 1; i <= amountTeam; i++)
+		 {  
+			fprintf(f, "Название команды %s\n", team[i].name);
+			fprintf(f, "Город команды %s\n", team[i].city);
+			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
+			fprintf(f, "Количество очков команды %d\n", team[i].points);
+			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
+			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
+			fprintf(f, "_________________________________________________ \n");
 		}
-	case 4: //сортировка по городу от длинного до короткого
+	  }
+	}
+	int numderOfSearch,searchSign;
+	printf("Введите по какому признаку найти команду:\n");
+	printf(" 1-количество игроков, 2-количетво очков ->");
+	scanf("%d", &numderOfSearch);
+	printf(" Сколько надо искать ->");
+	scanf("%d", &searchSign);
+	switch (numderOfSearch) 
 	{
-		for (int i = 0; i < amountTeam; i++)
-		{
-			fprintf(f, "Название команды %s\n", team[i].name);
-			fprintf(f, "Город команды %s\n", team[i].city);
-			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
-			fprintf(f, "Количество очков команды %d\n", team[i].points);
-			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
-			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
-			fprintf(f, "_________________________________________________ \n");
-
-		}
-		break;
-	}
-	default: {
-		for (int i = 0; i < amountTeam; i++)
-		{
-			fprintf(f, "Название команды %s\n", team[i].name);
-			fprintf(f, "Город команды %s\n", team[i].city);
-			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
-			fprintf(f, "Количество очков команды %d\n", team[i].points);
-			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
-			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
-			fprintf(f, "_________________________________________________ \n");
-		}
-	}
+	  case 1: //поиск по количеству игроков 
+	  {
+		 fprintf(f, "Поиск выполнен по игрокам \n");
+		 fprintf(f, "_________________________________________________ \n");
+		 int test=0;
+		 for (int i = 1; i <= amountTeam; i++)
+		 {  
+			if (team[i].amountPlayers == searchSign)
+			{
+				fprintf(f, "Название команды которую нужно найти %s\n", team[i].name);
+				fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
+				fprintf(f, "_________________________________________________ \n");
+			}
+			else 
+			{
+				test++;
+			}
+		  }  
+		 if (test != 0 )
+		 {
+			 fprintf(f, "Нет удолетворяющих поиску критериев \n");
+			 fprintf(f, "_________________________________________________ \n");
+		 }
+		  break;
+	  }
+	  case 2: //поиск по количеству очков 
+	  {  
+		 fprintf(f, "Поиск выполнен по очкам \n");
+		 fprintf(f, "_________________________________________________ \n");
+		 int test = 0;
+		 for (int i = 1; i <= amountTeam; i++)
+		 {  
+			if (team[i].points == searchSign)
+			{
+				fprintf(f, "Название команды которую нужно найти %s\n", team[i].name);
+				fprintf(f, "Количество игроков команды %d\n", team[i].points);
+				fprintf(f, "_________________________________________________ \n");
+			}
+			else
+			{
+				test++;
+			}
+		 }
+		 if (test != 0)
+		 {
+			 fprintf(f, "Нет удолетворяющих поиску критериев \n");
+			 fprintf(f, "_________________________________________________ \n");
+		 }
+		 break;
+	  }
+	  default:
+	  {  
+		 fprintf(f, "Нет поиска по таким критериям \n");
+	   	 fprintf(f, "_________________________________________________ \n");
+		 break;
+	  }
 	}
 	 fclose(f);
-	//_getch();
 	return 0;
 }
