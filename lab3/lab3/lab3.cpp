@@ -9,6 +9,7 @@
 #include <windows.h>
 #include <string.h>
 
+
 struct Word {
 	char data[255];
 	int size;
@@ -28,6 +29,12 @@ int amountM(char *x, int n) {
 	}
 	return AmountLetterM;
 }
+
+/*
+1) разбиваем на отдельные функции
+2) выносим константы 255, 5
+3) Выносим в константы 'м', 'М'
+*/
 int main()
 {
 	SetConsoleCP(1251);

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-#include <string.h>
+//#include <string.h>
 
 struct Word {
 	char data[255];

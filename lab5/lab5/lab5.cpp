@@ -9,30 +9,30 @@
 #include <conio.h>
 #include <windows.h>
 #include <string.h>
-struct point {
-	int NumberOfWins;
-	int NumberOfLosses;
-	int NumberOfDraws;
+struct Point {
+	int numberOfWins;
+	int numberOfLosses;
+	int numberOfDraws;
 };
-struct Footbool {
+struct FootballTeam {
 	char name[255];
 	char city[255];
-	int NumberOfGamesPlayed;
-		struct point {
-		int NumberOfWins;
-		int NumberOfLosses;
-		int NumberOfDraws;
+	int numberOfGamesPlayed;
+		struct Point {
+		int numberOfWins;
+		int numberOfLosses;
+		int numberOfDraws;
 	};
 	int amountPlayers;
-	char SurnameOftheTrainer[255];
+	char surnameOftheTrainer[255];
 	int points;
 };
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	Footbool team[100];
-	point points[100];
+	FootballTeam team[100];
+	Point points[100];
 	int amountTeam;
 	printf("Введите сколько будет команд ");
 	scanf("%d", &amountTeam);
@@ -43,20 +43,20 @@ int main()
 		scanf("%s", &team[i].name);
 		printf("Ведите город команды: ");
 		scanf("%s", &team[i].city);
-		printf("Ведите количесство сыграных игр: ");
-		scanf("%d", &team[i].NumberOfGamesPlayed);
+		printf("Ведите количесство сыгранных игр: ");
+		scanf("%d", &team[i].numberOfGamesPlayed);
 		printf("Ведите количесство выйгрышей: ");
-		scanf("%d", &points[i].NumberOfWins);
+		scanf("%d", &points[i].numberOfWins);
 		printf("Ведите количесство пройгрышей: ");
-		scanf("%d", &points[i].NumberOfLosses);
+		scanf("%d", &points[i].numberOfLosses);
 		printf("Ведите количесство ничьих: ");
-		scanf("%d", &points[i].NumberOfDraws);
+		scanf("%d", &points[i].numberOfDraws);
 		printf("Ведите количесство игроков: ");
 		scanf("%d", &team[i].amountPlayers);
 		printf("Ведите фамилию тренера: ");
-		scanf("%s", &team[i].SurnameOftheTrainer);
+		scanf("%s", &team[i].surnameOftheTrainer);
 		printf("Система подсчета отчков: 2(ввыйгрыши)-пройгрыши+ниьчи  (выйгрш 2 очка, пройгрыш -1, ничья 1)  \n");
-		team[i].points = 2 * points[i].NumberOfWins - points[i].NumberOfLosses + points[i].NumberOfDraws;
+		team[i].points = 2 * points[i].numberOfWins - points[i].numberOfLosses + points[i].numberOfDraws;
 		printf("Количество очков:%d \n", team[i].points);
 	}
 	FILE *f = fopen("tablOut.txt", "w");
@@ -73,7 +73,7 @@ int main()
 			for (int j = amountTeam - 1; j >= i; j--) 
 				if (team[j].amountPlayers < team[j + 1].amountPlayers)
 				{
-					Footbool buf;
+					FootballTeam buf;
 					buf = team[j];
 					team[j] = team[j + 1];
 					team[j + 1] = buf;   
@@ -85,10 +85,10 @@ int main()
 		{ 
 			fprintf(f, "Название команды %s\n", team[i].name);
 			fprintf(f, "Город команды %s\n", team[i].city);
-			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
+			fprintf(f, "Количество сыгранных игр команды %d\n", team[i].numberOfGamesPlayed);
 			fprintf(f, "Количество очков команды %d\n", team[i].points);
 			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
-			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
+			fprintf(f, "Фамилия тренера команды %s\n", team[i].surnameOftheTrainer);
 			fprintf(f, "_________________________________________________ \n"); 
 		}
 		break;
@@ -100,7 +100,7 @@ int main()
 			for (int j = amountTeam - 1; j >= i; j--)
 				if (team[j].points < team[j + 1].points)
 				{
-					Footbool buf;
+					FootballTeam buf;
 					buf = team[j];
 					team[j] = team[j + 1];
 					team[j + 1] = buf;
@@ -112,10 +112,10 @@ int main()
 		{
 			fprintf(f, "Название команды %s\n", team[i].name);
 			fprintf(f, "Город команды %s\n", team[i].city);
-			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
+			fprintf(f, "Количество сыгранных игр команды %d\n", team[i].numberOfGamesPlayed);
 			fprintf(f, "Количество очков команды %d\n", team[i].points);
 			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
-			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
+			fprintf(f, "Фамилия тренера команды %s\n", team[i].surnameOftheTrainer);
 			fprintf(f, "_________________________________________________ \n");
 		}
 			break;
@@ -129,10 +129,10 @@ int main()
 		 {  
 			fprintf(f, "Название команды %s\n", team[i].name);
 			fprintf(f, "Город команды %s\n", team[i].city);
-			fprintf(f, "Количество сыграных игр команды %d\n", team[i].NumberOfGamesPlayed);
+			fprintf(f, "Количество сыгранных игр команды %d\n", team[i].numberOfGamesPlayed);
 			fprintf(f, "Количество очков команды %d\n", team[i].points);
 			fprintf(f, "Количество игроков команды %d\n", team[i].amountPlayers);
-			fprintf(f, "Фамилия тренера команды %s\n", team[i].SurnameOftheTrainer);
+			fprintf(f, "Фамилия тренера команды %s\n", team[i].surnameOftheTrainer);
 			fprintf(f, "_________________________________________________ \n");
 		}
 	  }
@@ -165,7 +165,7 @@ int main()
 		  }  
 		 if (test != 0 )
 		 {
-			 fprintf(f, "Нет удолетворяющих поиску критериев \n");
+			 fprintf(f, "Нет удовлетворяющих поиску критериев \n");
 			 fprintf(f, "_________________________________________________ \n");
 		 }
 		  break;
@@ -190,7 +190,7 @@ int main()
 		 }
 		 if (test != 0)
 		 {
-			 fprintf(f, "Нет удолетворяющих поиску критериев \n");
+			 fprintf(f, "Нет удовлетворяющих поиску критериев \n");
 			 fprintf(f, "_________________________________________________ \n");
 		 }
 		 break;
