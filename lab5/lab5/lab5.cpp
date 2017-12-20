@@ -5,8 +5,7 @@
 очков (проигрыши, выигрыши, ничьи), количество игроков, фамилия тренера.
 */
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <conio.h>
+#include <stdio.h>`
 #include <windows.h>
 #include <string.h>
 struct Point {

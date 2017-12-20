@@ -10,6 +10,7 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+	
 	float speed;
 	printf("Введите скорость в узлах  ");
 
